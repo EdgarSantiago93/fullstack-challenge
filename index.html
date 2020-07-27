@@ -11,109 +11,25 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/assets/css/main.css">
 </head>
-
-<style>
-    :root {
-        --rw-blue: rgba(46, 88, 255, 1);
-        --rw-font: 'Poppins', sans-serif;
-    }
-
-    html,
-    body {
-        overflow: hidden;
-        font-family: var(--rw-font) !important;
-    }
-
-    .loader_container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 300px;
-    }
-
-    .loader_container > img {
-        width: 100%;
-        max-width: 30px;
-    }
-
-    .main_header {
-        width: 100%;
-        min-height: 60px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0 10px;
-    }
-
-    .loader {
-        display: none;
-    }
-
-    .loader_box {
-        background: #eaeaea;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .loader_box > img {
-        width: 100%;
-        max-width: 45px;
-    }
-
-    .rw_logo {
-        width: 100%;
-        max-width: 170px;
-    }
-
-    .main_container {
-        display: flex;
-    }
-
-    .right_col {
-        width: 100%;
-        background: #f0f3f6;
-        height: 100vh;
-        padding-bottom: 100px;
-        overflow-y: scroll;
-    }
-
-    .content_container {
-        margin: 15px;
-        padding: 15px;
-        background: white;
-        min-height: 400px;
-    }
-
-    .section_title {
-        /*font-size: calc(27px + (32 - 27) * ((100vw - 600px) / (1300 - 600)));*/
-        font-size: 28px;
-        font-weight: 400;
-    }
-
-    @media screen and (max-width: 768px) {
-        .left_col {
-            width: 0 !important;
-        }
-    }
-</style>
 
 
 <body>
 
 
-<div class="loader">
-    <div class="loader_box">
-        <img src="src/assets/img/loader.gif" alt="loader_img">
-    </div>
-</div>
+<!--<div class="loader">-->
+<!--    <div class="loader_box">-->
+<!--        <img src="src/assets/img/loader.gif" alt="loader_img">-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <header class="main_header">
+    <a href="/">
     <img src="https://static.wixstatic.com/media/475185_0c498a2fe6454b43a81b98719406dafe~mv2.png/v1/fill/w_192,h_50,al_c,q_85,usm_0.66_1.00_0.01/LOGO-REWORTH-BLACK_edited.webp"
          alt="rw_logo" class="rw_logo">
+    </a>
 </header>
 
 <div class="main_container" id="root">
@@ -124,8 +40,5 @@
 <script src="./src/index.js"></script>
 
 
-<script>
-
-</script>
 </body>
 </html>

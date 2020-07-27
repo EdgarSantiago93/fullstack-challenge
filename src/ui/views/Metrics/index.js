@@ -2,116 +2,69 @@ import { useEffect } from "react";
 import LeftCol from "../../components/Menu";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import { Line,Bar} from 'react-chartjs-2';
 
-import Loader from '../../../assets/img/loader.gif';
-import OfferTable from "../../components/OfferTable";
-import OfferModal from "../../components/OfferModal";
-
+import {noLinesLine,noLinesBar,getBarChartData,getLineChartData,generalError} from "./helpers";
 
 
 const Metrics=()=>{
 
-    const [videoUrl, setVideoUrl] = useState('');
-
-    const [inStoreObj, setInitial] = useState({
-        data: [],
-        loading:true,
-        vidUrl:'',
+    const [lineChartData,setLineChartData]= useState({
+        labels:[],
+        datasets:[],
+        options:{}
+    });
+    const [barChartData,setBarChartData]= useState({
+        labels:[],
+        datasets:[],
+        options:{}
     });
 
     useEffect(() => {
         axios
-            .get('https://santiagoguerrero.mx/awesome_endpoint',{headers: {
-                    'Access-Control-Allow-Origin': '*',
-                },})
+            .get('https://testapi.io/api/edgarsantiago93/reworth')
             .then(response => {
                 if(response.status===200){
-
-
-                    console.log(response)
-                    const responseActualData = response.data.data;
-                    const dataToArray = [];
-                    // responseActualData.map(item => {
-                    //     return dataToArray.push(item);
-                    // });
-                    // setTimeout(function(){
-                    //     setInitial({
-                    //         ...inStoreObj,
-                    //         data: dataToArray,
-                    //         loading: false
-                    //     });
-                    // },1500)
-
+                    setLineChartData(getLineChartData(response.data))
+                    setBarChartData(getBarChartData(response.data))
                 }
                 else{
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Please try again later',
-                        icon: 'error',
-                        confirmButtonColor:'#2e58ff',
-                        confirmButtonText: 'Ok'
-                    })
+                    generalError();
                 }
 
             })
             .catch(error => {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Please try again later',
-                    icon: 'error',
-                    confirmButtonColor:'#2e58ff',
-                    confirmButtonText: 'Ok'
-                })
+                generalError();
             });
 
 
     }, []);
 
-    function updateVideoUrl(vu){
-        console.log("se pone el coso")
-        setVideoUrl(vu);
-    }
-
-
     return (
       <>
-          <LeftCol />
-
+          <LeftCol activeMenu='metrics' />
           <div className="right_col">
               <Breadcrumbs>
-                  <li className="breadcrumb-item active">Offers</li>
+                  <li className="breadcrumb-item active">Metrics</li>
               </Breadcrumbs>
-
               <div className="content_container">
                   <div className="section_title">
-                      Offers
+                      Metrics - Swiss Population
                   </div>
-
                   <div className="section_content">
-
-
-                      <div className="">Total offers {inStoreObj.data.length}</div>
-
-                      {inStoreObj.loading?
-                          <div className="loader_container">
-                          <img src={Loader} alt="" />
+                      <div className="row">
+                          <div className="col-sm-12 col-md-6">
+                              <Line data={lineChartData} options={noLinesLine} />
                           </div>
-                          :
-                          <OfferTable trItems={inStoreObj.data} setVideoCallBack={updateVideoUrl} />
-                          }
+                          <div className="col-sm-12 col-md-6">
+                              <Bar data={barChartData} options={noLinesBar} />
+                          </div>
+                      </div>
                   </div>
               </div>
           </div>
-          <OfferModal vidUrl={videoUrl} />
-
-
-
       </>
-
     );
-
-
 }
 
 

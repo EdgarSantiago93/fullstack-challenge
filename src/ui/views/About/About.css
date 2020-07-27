@@ -1,0 +1,31 @@
+a {
+    color: rgba(46, 88, 255, 1) !important;
+}
+
+ol {
+    list-style: disc !important;
+}
+.breadcrumb{
+    list-style:none!important;
+}
+
+pre {
+    background: #e2e2e2;
+    padding: 10px;
+}
+blockquote {
+    border-left: solid;
+    color: #0808087a;
+    padding: 10px 10px;
+}
+blockquote > p {
+    margin-bottom: 0!important;
+}
+
+.title_span {
+    background: #2e57ff;
+    font-size: 15px;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+}

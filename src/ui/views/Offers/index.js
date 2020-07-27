@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import LeftCol from "../../components/Menu";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import axios from 'axios';
-import Swal from 'sweetalert2'
 
 import Loader from '../../../assets/img/loader.gif';
 import OfferTable from "../../components/OfferTable";
 import OfferModal from "../../components/OfferModal";
 
+import {generalError} from "./helpers";
 
 
 const Offers=()=>{
@@ -17,7 +17,6 @@ const Offers=()=>{
     const [inStoreObj, setInitial] = useState({
         data: [],
         loading:true,
-        vidUrl:'',
     });
 
     useEffect(() => {
@@ -36,42 +35,26 @@ const Offers=()=>{
                             data: dataToArray,
                             loading: false
                         });
-                    },1500)
-
+                    },1000)
                 }
                 else{
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Please try again later',
-                        icon: 'error',
-                        confirmButtonColor:'#2e58ff',
-                        confirmButtonText: 'Ok'
-                    })
+                    generalError()
                 }
 
             })
             .catch(error => {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Please try again later',
-                    icon: 'error',
-                    confirmButtonColor:'#2e58ff',
-                    confirmButtonText: 'Ok'
-                })
+                generalError()
             });
-
-
     }, []);
 
     function updateVideoUrl(vu){
-        console.log("se pone el coso")
         setVideoUrl(vu);
     }
 
 
     return (
       <>
-          <LeftCol />
+          <LeftCol activeMenu='offers' />
 
           <div className="right_col">
               <Breadcrumbs>
@@ -84,7 +67,6 @@ const Offers=()=>{
                   </div>
 
                   <div className="section_content">
-
 
                       <div className="">Total offers {inStoreObj.data.length}</div>
 

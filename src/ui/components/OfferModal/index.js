@@ -7,8 +7,6 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 const OfferModal =({vidUrl})=>
 {
 
-    // const classes = isShown?['info_modal_box info_modal_box_shown']:['info_modal_box'];
-
     function closeModal(){
         const mod = document.getElementById('infoModalBox');
         document.getElementById('videoFrame').src ='';
@@ -28,7 +26,6 @@ const OfferModal =({vidUrl})=>
 
                 <iframe
                     id='videoFrame'
-                    // title='videoFrame' width="560" height="315" src='https://www.youtube.com/embed/0nvlkVjrrx8?start=33'
                     title='videoFrame' width="560" height="315" src={vidUrl}
                     frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

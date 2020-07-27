@@ -6,8 +6,6 @@ import {
     Redirect
 } from "react-router-dom";
 
-// import DirectoryList from "ui/components/DirectoryList";
-import LoginView from "./ui/views/Login";
 import Offers from "./ui/views/Offers";
 import About from "./ui/views/About";
 import Metrics from "./ui/views/Metrics";
@@ -19,25 +17,11 @@ export default function App()  {
         <Router>
                 <Switch>
 
+                    <Redirect exact from="/" to="about" />
 
-                    {/*<Route path="/">*/}
-                    {/*    <RedirectToOffers />*/}
-                    {/*</Route>*/}
-
-
-                    <Route path="/login">
-                        <LoginView />
-                    </Route>
-
-                    <Route path="/offers">
-                        <Offers />
-                    </Route>
-                    <Route path="/metrics">
-                        <Metrics />
-                    </Route>
-                    <Route path="/about">
-                        <About />
-                    </Route>
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/metrics" component={Metrics} />
+                    <Route exact path="/offers" component={Offers} />
                     <Route path="*">
                         <NoMatch />
                     </Route>
@@ -47,24 +31,18 @@ export default function App()  {
 }
 
 
-function RedirectToOffers(){
-    let location = useLocation();
-
-    return (
-        <Redirect
-        to={{
-            pathname: "/offers",
-            state: { from: location }
-        }}
-    />)
-}
-
 function NoMatch() {
     let location = useLocation();
+    const componentStyle={
+        width:'100%',
+        display:'flex',
+        justifyContent:'center',
+    alignItems:'center',
+    }
     return (
-        <div>
+        <div style={componentStyle}>
             <h3>
-                No match for <code>{location.pathname}</code>
+                404 <code>{location.pathname}</code>
             </h3>
         </div>
     );

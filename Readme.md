@@ -1,113 +1,78 @@
-# ReWorth Coding Challenge: fullstack
+# ReWorth Coding Challenge.
+### Edgar Santiago
 
-![Build](https://github.com/appuntos/fullstack-challenge/workflows/Build/badge.svg?branch=master)
 
-> Little coding challenge for our hiring process.
-> Involves React components and API integration tasks.
+> Fast learning approach
+> Involves React components, API integration and data display.
 
-## Getting started
+## Packages used
+- Chart.js
+- Axios
+- React-Markdown
+- SweetAlert
+- FontAwesome
 
-To get stated clone project and install dependencies.
+## Development process
 
-```{.bash}
-git clone https://github.com/appuntos/fullstack-challenge
-```
+These are the steps I followed to complete the challenge:
+
+- It had been some time since I had developed in React, so I did some research on new practices and new features, mainly about the ```functions over classes``` approach, I consulted with friends on some issues I was having and finally, I took a crash course in advanced react along with some videos on Youtube.
+
+- I started to plan all the components that I'd need for the final app. Also, I did some research on the company, this lead me to a [video](https://vimeo.com/404406126) published by Raphael on vimeo, which gave me a general look and feel of what you were, maybe, expecting.
+
+- I adapted several assets from that video, including the gif loader.
+
+- I tried to create a familiar and pleasant UI experience.
+
+- Once I had finished the main task, I decided to implement a small dashboard with 2 graphs, this is because, in one of the interviews, John asked me if I had some examples of data transforming and displaying.
+
+- I searched online for some open data and stumbled upon a JSON file containing the population stats from Switzerland, which I then uploaded to a test api service so that I could fetch the information.
+
+
+## Setting it up
+
+This project uses the bare minimum for deployment, so a ```npm install``` & ```npm start```   should do the trick.
+
 
 ```{.bash}
 cd fullstack-challenge
 npm install
 ```
 
-After that start the development server and the test api server(run each
-command in a separate terminal session, I recommend using tmux)
+After that start the development server
 
 ```{.bash}
 npm start
 ```
 
-## Possible pitfalls and sources of confusion
 
-**BEWARE!!** This project uses **global default imports** and **import
-aliases**. What that means is that some modules are imported default
-with default names. To avoid lots of headache be sure not to define
-variables with the folowing names(as these exist in the global
-namespace for all project files):
+## Code notes
 
--   store (this a reference the redux store)
--   log (this is a global reference to loglevel)
+I followed some common practices I found online along with my personal coding style, I like to divide the codebase as much as possible.
 
-Furthermore, react and { useState } are imported by default globally.
-So.. **do not include this code in any file**:
+There are 2 main folders inside ```src/ui```, ```components``` and ``views``, the first one contains all the parts used in the app with their respective stylesheet, 
+the latter contains the assembled views, logic and styles in some cases.
 
-```{.javascript org-language="js"}
-import React from 'react';
+The main ``App`` component contains an instance of ``ReactRouterDom`` and it uses the ``Switch`` component for defining routes, each route 
+has an external component declared except for the ``404`` route which has a function defined within the same file.
+
+#### Routes
+```
+ / -> defaults to "about" 
+ /about
+ /offers
+ /metrics
 ```
 
-**Or**
+## Final thoughts
 
-```{.javascript org-language="js"}
-import React, { useState } from 'react';
-```
+Even though the challenge was simple in a technical way, it presented a somewhat formidable challenge for me in another level.
 
-See the package.json file for this project. Auto-imports are definded
-under _babel plugins_ and look like this:
+I had a lot of fun re-learning some front end concepts, it had been some time since I had a challenge (learn a lot in a short period of time), and this simple test gave me one. 
 
-```{.javascript org-language="js"}
-"babel": {
-    "plugins": [
-        "auto-import",
-        {
-            "declarations": [
-                {
-                    "default": "React",
-                    "path": "react",
-                    "members": [
-                        "useState"
-                    ]
-                },
-                ...
-            }
-        }
-    }
-}
-```
+As Bear Grylls correctly puts it, I had to [improvise, adapt and overcome](https://www.meme-arsenal.com/memes/14bfd841d1b56eb71dda535bbc9dfc3b.jpg).
 
-**BEWARE!! This list of default imports is subject to change! check the actual file for changes**
+Thank you for the opportunity
 
-## Style guide
+-ES.
 
-All code introduced to this project should follow the following
-guidelines:
-
-1.  Code should prefer functions over classes at all costs. See [the
-    docs](https://reactjs.org/docs/hooks-intro.html) for details on
-    using functional components in React.
-
-## Instructions
-
-Please read the following instructions carefully and if you have any questions please address them to whom sent the challenge:
-
-> Take a minute to analyze the project set up and locate everything you need
-
-1.  Fork this repo
-2.  Using the canvas project, implement the following requirements:
-
--   Connect to the ReWorth API with help from the provided documentation (No authentication needed for this exercise) https://docs.google.com/document/d/1ckJwM6Uy25uAZL8ja4PlzYE_iusgb5cWgpL0mTjT6Rw
--   Perform a GET request to the directory and fetch the offer array
--   Display the offers in a list using the data you have available from the API (get creative)
--   Based on the colors of ReWorth, make it look cool. No design is provided but a nice UI is expected
--   Create as many components or assets as you need, be careful to organize the files in a clear way and use comments when necessary
-
-3.  You can use and install npm libraries if needed, please provide a reasoning for your choices, you can use a component library or create custom components.
-4.  Optimize and check your code for errors
-5.  When you're ready, push your solution to your forked repo and let us know via email!
-6.  **Bonus** Implement list ordering by any of the object attributes and explain how you did it
-
--   We'll evaluate the overall solution, so take time to optimize and document your code. We take into consideration the following points: Coding practices and standards, code optimization, does it run/work?, Documentation and reasoning behind your solution.
--   If you have any questions or issues running the cample project please let us know ASAP so we can get you help.
-
-## Technologies Used
-
--   Reactjs
--   Parcel
--   Babel

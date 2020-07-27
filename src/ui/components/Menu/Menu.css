@@ -28,4 +28,22 @@ a:hover {
     align-items: center;
     height: 40px;
     padding-left: 10px;
+    color: black !important;
+}
+
+.link_li > a {
+    color: black !important;
+}
+
+.menu_icon {
+    margin-right: 10px;
+}
+
+.link_active {
+    background: #d6e2fd;
+    border-right: solid 3px rgba(46, 88, 255, 1);
+}
+
+.link_active > a {
+    color: rgba(46, 88, 255, 1)!important;
 }

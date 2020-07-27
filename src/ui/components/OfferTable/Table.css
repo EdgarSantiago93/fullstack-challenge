@@ -27,10 +27,10 @@
     height: 70px;
 }
 
-/*tr:nth-child(even) {*/
-/*    background: #f2f6ff;*/
-/*}*/
+tr:nth-child(even) {
+    background: #f2f6ff;
+}
 
-/*tr:nth-child(odd) {*/
-/*    background: white;*/
-/*}*/
+tr:nth-child(odd) {
+    background: white;
+}
