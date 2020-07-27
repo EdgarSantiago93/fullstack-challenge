@@ -3,6 +3,7 @@
 
 
 > Fast learning approach
+>
 > Involves React components, API integration and data display.
 
 ## Packages used
