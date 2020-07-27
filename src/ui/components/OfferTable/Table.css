@@ -1,0 +1,36 @@
+.offerTable {
+    width: 100%;
+}
+
+.option_button {
+    margin: 10px;
+}
+
+.option_button_del {
+    margin: 10px;
+}
+
+.option_button_info {
+    margin: 10px;
+}
+
+.photo_container {
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 100px;
+    width: 60px;
+    margin: 0 auto;
+}
+
+.ot_tr {
+    height: 70px;
+}
+
+/*tr:nth-child(even) {*/
+/*    background: #f2f6ff;*/
+/*}*/
+
+/*tr:nth-child(odd) {*/
+/*    background: white;*/
+/*}*/
